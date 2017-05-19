@@ -1,1 +1,65 @@
+Plan as of May 19th, 2017:
+
+CRUCIAL JOBS: 
+1) Main Game Functionality - We need to get something that at least works, at the most basic level, going. This would probably be 
+a few frames of the game with the moving pilot following the cursor, along with spawned enemies and enemy interaction.
+2) Debugging Game - Need to debug the game as we go along with the project to ensure basic functionality as well as optimal functionality.
+---OTHER IMPORTANT JOBS---
+3) Designer - level design, organization, the look of the pilot as well as the enemies, UI, special functionality, etc.
+4) Devlog - Maintain a devlog and create plans as we go along in order to stay on track and organized.
+
+CORE FUNCTIONALITY:
+- Pilot that follows user commands based on mouse movement
+- Randomly spawned enemies in the background
+- Pilot movement
+- Enemy tracking on pilot axis (in essence, a way for enemies to be manueverable around the pilot)
+- Point system
+- Way to win
+
+NON-CORE FUNCTIONALITY:
+- Power Ups
+- Special Levels
+- Multiple Enemies
+- Speed Scaling
+
+PREREQUISITES: 
+The enemies and pilots are prereqs for the movement system as well as the point system. These must be created first to implement anything else. Tracking mouse movement in each instant to direct the pilot is a functionality of the pilot as well. Levels and the point system will be created after the initial components of the game (movement, pilot, enemy, manueverablility) are implemented.
+
+DELEGATED TASKS:
+- Background for game.
+- Music for game.
+- Design of pilot.
+- Design of enemy.
+- Enemy Spawning.
+- NON CORE FUNCTIONALITY
+
+COLLABORATIVE TASKS:
+- Maneuverability
+- Point System
+- Level System
+- End Game
+- Movement System
+- Enemy Tracking
+- CORE FUNCTIONALITY
+
+TIMELINE:
+- Week 1: Implement core functionality within first five days. Use two other days accordingly to debug and make the game more optimal.
+  Example:
+  Day 1 - Backdrop, Pilot, Enemies
+  Day 2-  Mouse Movement
+  Day 3 - Enemy Spawning
+  Day 4 - Manuevarability & Enemy Tracking
+  Day 5 - Point System and End Game
+  Day 6 - Debugging
+  Day 7 - Debugging
+  
+- Week 2: Implement non-core functionality, after the game has been finished (at a basic level). Use the last two days, again, to debug   and make the game optimal.
+  Example:
+  Day 1 - NONCORE 
+  Day 2 - NONCORE  
+  Day 3 - NONCORE 
+  Day 4 - NONCORE 
+  Day 5 - NONCORE 
+  Day 6 - Debugging
+  Day 7 - Debugging
 
