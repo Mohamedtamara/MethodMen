@@ -16,6 +16,7 @@ void setup(){
 void draw(){
   clear();
   pilot.dragsegment();
+  pilot.dragtrail();
   for (int i = 0; i < badDudes.size; i++){
     badDudes[i].update();
   }
