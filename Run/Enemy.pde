@@ -13,7 +13,7 @@ class Enemy{
       y = random(height);
       x = width;
     }
-    dx = -(random(3) + .5);
+    dx = -(random(2) + 1);
     dy = -(dx);
     rad = 5;
     c = color(255,0,0);
@@ -22,6 +22,7 @@ class Enemy{
   void update(){
     ellipse(x,y,rad,rad);
     move();
+    fill(c);
   }
   
   void move(){
