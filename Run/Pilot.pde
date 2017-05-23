@@ -11,11 +11,16 @@ class Pilot {
   //should change based on position of the pilot ball
   int trailSize = 50;
   PVector circlePosition;
+  PVector currTrail;
+  PVector prevTrail;
 
   //default constructor
   Pilot() {
     col = color(48, 139, 206, 140);
     lives = new Stack<Boolean>();
+    lives.push(true);
+    lives.push(true);
+    lives.push(true);
     x = mouseX;
     y = mouseY;
     trail = new ArrayList<PVector>();
@@ -57,4 +62,18 @@ class Pilot {
   }// end dragtrail()
 
   //visual representation of lives
+  void draglives(){
+    for (Boolean a: lives){
+      if(a){
+        float targetX = mouseX;
+        float dx = targetX - x;
+        x+= dx ;
+        float targetY = mouseY;
+        float dy = targetY - y;
+        y+= dy ;
+        fill(col);
+        ellipse(x, y, 10, 10);
+    }
+    }
+  }
 }//end class
