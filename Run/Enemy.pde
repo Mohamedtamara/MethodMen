@@ -1,28 +1,22 @@
 class Enemy{
   
-  float x,y,dx,dy,rad;
+  float x,y,dx,dy, rand, rad;
   color c;
   
   Enemy(){
-    int whichWay = (int)random(2);
-    if (whichWay == 0){
-      x = random(width);
-      y = 0;
-    }
-    if (whichWay == 1){
-      y = random(height);
-      x = width;
-    }
-    dx = -(random(2) + 1);
-    dy = -(dx);
+    x = random(width);
+    y = random(height);
+    rand = (random(3));
+    dx = -(rand);
+    dy = (rand);
     rad = 5;
     c = color(255,0,0);
   }
   
   void update(){
+    fill(c);
     ellipse(x,y,rad,rad);
     move();
-    fill(c);
   }
   
   void move(){
@@ -30,5 +24,3 @@ class Enemy{
     y += dy;
   }
 }
-  
-  
