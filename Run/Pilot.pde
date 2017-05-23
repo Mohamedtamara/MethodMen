@@ -28,5 +28,4 @@ class Pilot{
     y+= dy;
     ellipse(x,y, 25,25);
   }
-
 }
