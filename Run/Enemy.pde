@@ -1,24 +1,33 @@
-Pilot pilot;
-Enemy[] badDudes;
-
-void setup() {
-  size(600, 600);
-  background(0);
-  frameRate(60);
-  pilot = new Pilot();
-  badDudes = new Enemy[100];
-  for (int i = 0; i < badDudes.length; i++) {
-    badDudes[i] = new Enemy();
+class Enemy{
+  
+  float x,y,dx,dy, rand, rad;
+  color c;
+  
+  Enemy(){
+    int whichWayb = (int)random(2);
+    if (whichWayb == 0){
+      x = random(width);
+      y = 0;
+    }
+    if (whichWayb == 1){
+      x = width;
+      y = random(height);
+    }
+    rand = (random(3) + .5);
+    dx = -(rand);
+    dy = rand;
+    rad = 5;
+    c = color(255,0,0);
   }
-}
-
-
-void draw() {
-  clear();
-  for (Enemy a : badDudes) {
-    a.update();
+  
+  void update(){
+    fill(c);
+    ellipse(x,y,rad,rad);
+    move();
   }
-  pilot.dragsegment();
-  pilot.dragtrail();
-  pilot.draglives();
+  
+  void move(){
+    x += dx;
+    y += dy;
+  }
 }
