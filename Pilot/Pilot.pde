@@ -25,7 +25,7 @@ class Pilot{
     x+= dx;
     float targetY = mouseY;
     float dy = targetY - y;
-    x+= dy;
+    y+= dy;
   }
 
 }
