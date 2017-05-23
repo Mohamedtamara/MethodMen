@@ -42,8 +42,9 @@ Shaikat :: Created devlog.txt and the plan subdirectory on the main git repo.
 
 2017-05-22
 --------------------------------------------------------------
-Mohamed :: Added Pilot class and worked on Pilot.pde
-Shaikat :: Got a working class for Pilot.pde
+Mohamed :: Added Pilot class and worked on Pilot.pde, got 
+Enemy.pde to sorta work, we're getting there.
+Shaikat :: Got a working class for Pilot.pde.
 ==============================================================
 
 
