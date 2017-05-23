@@ -7,7 +7,7 @@ void setup(){
   frameRate(60);
   pilot = new Pilot();
   badDudes = new Enemy[100];
-  for (int i = 0; i < badDudes.size; i++){
+  for (int i = 0; i < badDudes.length; i++){
     badDudes[i] = new Enemy();
   }
 }
@@ -17,7 +17,7 @@ void draw(){
   clear();
   pilot.dragsegment();
   pilot.dragtrail();
-  for (int i = 0; i < badDudes.size; i++){
+  for (int i = 0; i < badDudes.length; i++){
     badDudes[i].update();
   }
 }
