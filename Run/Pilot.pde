@@ -4,9 +4,13 @@ class Pilot {
 
   //instance vars;
   Stack<Boolean> lives;
+  int numLives;
   color col;
   float x;
   float y;
+  float lx;
+  float ly;
+  float easing = .10;
   ArrayList<PVector> trail;
   //should change based on position of the pilot ball
   int trailSize = 50;
@@ -21,8 +25,11 @@ class Pilot {
     lives.push(true);
     lives.push(true);
     lives.push(true);
+    numLives = 3;
     x = mouseX;
     y = mouseY;
+    lx = mouseX;
+    ly = mouseY;
     trail = new ArrayList<PVector>();
     circlePosition = new PVector(width*.5, width*.5);
   }
@@ -39,6 +46,7 @@ class Pilot {
     y+= dy;
     fill(col);
     ellipse(x, y, 17, 17);
+    line(x,y,x,y);
   }//end dragsegment()
 
   void dragtrail() {
@@ -61,19 +69,40 @@ class Pilot {
     }
   }// end dragtrail()
 
-  //visual representation of lives
+//visual representation of lives
   void draglives(){
-    for (Boolean a: lives){
-      if(a){
-        float targetX = mouseX;
-        float dx = targetX - x;
-        x+= dx ;
-        float targetY = mouseY;
-        float dy = targetY - y;
-        y+= dy ;
-        fill(col);
-        ellipse(x, y, 10, 10);
-    }
+    for(boolean b: lives){
+      if(b == true){
+        float xpos  =  mouseX;
+        float Dx = xpos - lx;
+        float ypos = mouseY;
+        float Dy = ypos - ly;
+        lx += Dx * easing;
+        ly += Dy * easing;
+        ellipse(lx, ly, 10, 10);
+        String l = numLives + "";
+        text(l, lx, ly);
+      }
     }
   }
+  
+  void dragtext(){  
+    for(boolean b: lives){
+      if(b == true){
+        float xpos  =  mouseX;
+        float Dx = xpos - lx;
+        float ypos = mouseY;
+        float Dy = ypos - ly;
+        lx += Dx * easing;
+        ly += Dy * easing;
+        String l = numLives + "";
+        text(l, lx, ly);
+        fill(255,0,0);
+      }
+    }
+  }
+  
+    
+
+
 }//end class
