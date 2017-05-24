@@ -21,4 +21,5 @@ void draw() {
   pilot.dragsegment();
   pilot.dragtrail();
   pilot.draglives();
+  pilot.dragtext();
 }
