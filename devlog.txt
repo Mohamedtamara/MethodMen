@@ -13,14 +13,18 @@ OBSTACLES OVERCOME
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-Enemies all spawn at once, should spawn randomly
 
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-drawtailsegment() - lets there be a tail!
 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-use of stacks for enemies instead of array
+
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,6 +49,26 @@ Shaikat :: Created devlog.txt and the plan subdirectory on the main git repo.
 Mohamed :: Added Pilot class and worked on Pilot.pde, got 
 Enemy.pde to sorta work, we're getting there.
 Shaikat :: Got a working class for Pilot.pde.
+==============================================================
+
+2017-05-23
+--------------------------------------------------------------
+Mohamed :: Started work on Enemy.pde, worked on flowchart.
+Shaikat :: Added trailing tail to the pilot, worked on UML.
+==============================================================
+
+2017-05-24
+--------------------------------------------------------------
+Mohamed :: Enemy.pde class is working, but all enemies are
+Spawning at once.
+Shaikat :: Started work on getting lives in the form of balls
+To trail the pilot.
+==============================================================
+
+2017-05-25
+--------------------------------------------------------------
+Mohamed :: Updated devlog.txt.
+Shaikat :: Work on collision detection for the enemies.
 ==============================================================
 
 
