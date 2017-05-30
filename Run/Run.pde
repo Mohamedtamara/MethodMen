@@ -3,7 +3,7 @@ import java.util.*;
 // states
 final int stateGame  = 0; // consts
 final int statePause = 1;
-int state = statePause;    // current 
+int state;    // current 
 PImage img;
 PImage img2;
 Pilot pilot;
@@ -13,6 +13,7 @@ void setup() {
   size(600, 600);
   background(0);
   frameRate(60);
+  state = statePause; 
   img = loadImage("start1.jpg");
   img2 = loadImage("start2.jpg");
   pilot = new Pilot();
@@ -36,12 +37,17 @@ void draw() {
     if (wallcollision(test)){
       badDudes.remove(0);
     }
+    if (wallcollision(pilot)){
+      setup();
+      return;
+    }
     if (collision( pilot, test )) {
       pilot.numLives--;
       pilot.lives.pop();
       badDudes.remove(0);
       if (pilot.lives.isEmpty()) {
-        exit();
+        setup();
+        return;
       }
     }
     pilot.dragsegment();
@@ -82,5 +88,12 @@ boolean wallcollision(Enemy one){
   if(one.x < 0 || one.y > height){
     return true;
   }  
+  return false;
+}
+
+boolean wallcollision(Pilot one){
+  if(one.x <= 1 || one.x >= width-1 || one.y <= 1 || one.y >= height-1){
+    return true;
+  }
   return false;
 }

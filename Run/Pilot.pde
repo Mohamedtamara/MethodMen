@@ -26,8 +26,8 @@ class Pilot {
     lives.push(true);
     lives.push(true);
     numLives = 3;
-    x = mouseX;
-    y = mouseY;
+    x = 300;
+    y = 300;
     lx = mouseX;
     ly = mouseY;
     trail = new ArrayList<PVector>();
