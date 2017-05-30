@@ -14,9 +14,10 @@
 ## Launch Instructions
 1. *First download processing, available here:* [processing](https://processing.org/download/)
 2. *Clone the git repo:* git(at)github.com:Mohamedtamara/MethodMen.git
-3. *In the root of the repo, do this:*
+3. *In the root of the repo:*
 ```shell
-processing Run.pde
+$ cd Run
+$ processing Run.pde
 ```
 # :fire: :ok_hand: :clap: :pray:
 
