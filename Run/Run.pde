@@ -33,6 +33,9 @@ void draw() {
     keypressed();
     Enemy test = badDudes.get(0);
     test.update();
+    if (wallcollision(test)){
+      badDudes.remove(0);
+    }
     if (collision( pilot, test )) {
       pilot.numLives--;
       pilot.lives.pop();
@@ -57,8 +60,6 @@ void keypressed(){
   }
 }
 
-
-
 void initstartscreen(){
   int s = second();
   if(s%2 == 1){
@@ -68,12 +69,18 @@ void initstartscreen(){
     image(img2, 0, 0);
   }
 }
-    
 
 boolean collision(Pilot a, Enemy b) {
-  float isis = dist(a.x, a.y, b.x, b.y);
-  if (isis <= 2) {
+  float tag = dist(a.x, a.y, b.x, b.y);
+  if (tag <= 13) {
     return true;
   }
+  return false;
+}
+
+boolean wallcollision(Enemy one){
+  if(one.x < 0 || one.y > height){
+    return true;
+  }  
   return false;
 }

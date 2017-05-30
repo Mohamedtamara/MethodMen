@@ -16,7 +16,7 @@ class Enemy {
     rand = (random(3) + .5);
     dx = -(rand);
     dy = rand;
-    rad = 5;
+    rad = random(5) + 5;
     c = color(255, 0, 0);
   }
 
