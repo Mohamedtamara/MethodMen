@@ -13,7 +13,7 @@ class Pilot {
   float easing = .10;
   ArrayList<PVector> trail;
   //should change based on position of the pilot ball
-  int trailSize = 50;
+  int trailSize = 19;
   PVector circlePosition;
   PVector currTrail;
   PVector prevTrail;
