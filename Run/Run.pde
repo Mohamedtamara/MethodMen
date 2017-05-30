@@ -18,60 +18,60 @@ void setup() {
   img2 = loadImage("start2.jpg");
   pilot = new Pilot();
   badDudes = new ArrayList<Enemy>(100);
-  for (int i = 0; i < 100; i++) {
-    badDudes.add(new Enemy());
-  }
 }
 
 
 void draw() {
-  if(state == statePause){
+  //playing with the module increases # of enemies. (DIFFICULTY!!!!)
+  if (frameCount%10 == 0) {
+    badDudes.add(new Enemy());
+  }
+  if (state == statePause) {
     initstartscreen();
     keypressed();
-  }
-  else{
+  } else {
     clear();
     keypressed();
-    Enemy test = badDudes.get(0);
-    test.update();
-    if (wallcollision(test)){
-      badDudes.remove(0);
-    }
-    if (wallcollision(pilot)){
-      setup();
-      return;
-    }
-    if (collision( pilot, test )) {
-      pilot.numLives--;
-      pilot.lives.pop();
-      badDudes.remove(0);
-      if (pilot.lives.isEmpty()) {
+    for (int i = badDudes.size() -1; i >= 0; i--) {
+      Enemy test = badDudes.get(i);
+      test.update();
+      if (wallcollision(test)) {
+        badDudes.remove(test);
+      }
+      if (wallcollision(pilot)) {
         setup();
         return;
       }
+      if (collision( pilot, test )) {
+        pilot.numLives--;
+        pilot.lives.pop();
+        badDudes.remove(test);
+        if (pilot.lives.isEmpty()) {
+          setup();
+          return;
+        }
+      }
     }
-    pilot.dragsegment();
-    pilot.dragtrail();
-    pilot.draglives();
-    pilot.dragtext();
+      pilot.dragsegment();
+      pilot.dragtrail();
+      pilot.draglives();
+      pilot.dragtext();
     }
   }
 
-void keypressed(){
-  if(key == 'p'){
+void keypressed() {
+  if (key == 'p') {
     state = statePause;
-  }
-  else if(key == 'g'){
+  } else if (key == 'g') {
     state = stateGame;
   }
 }
 
-void initstartscreen(){
+void initstartscreen() {
   int s = second();
-  if(s%2 == 1){
-    image(img,0,0);
-  }
-  else{
+  if (s%2 == 1) {
+    image(img, 0, 0);
+  } else {
     image(img2, 0, 0);
   }
 }
@@ -84,15 +84,15 @@ boolean collision(Pilot a, Enemy b) {
   return false;
 }
 
-boolean wallcollision(Enemy one){
-  if(one.x < 0 || one.y > height){
+boolean wallcollision(Enemy one) {
+  if (one.x < 0 || one.y > height) {
     return true;
   }  
   return false;
 }
 
-boolean wallcollision(Pilot one){
-  if(one.x <= 1 || one.x >= width-1 || one.y <= 1 || one.y >= height-1){
+boolean wallcollision(Pilot one) {
+  if (one.x <= 1 || one.x >= width-1 || one.y <= 1 || one.y >= height-1) {
     return true;
   }
   return false;
