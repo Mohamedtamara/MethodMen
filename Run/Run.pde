@@ -17,6 +17,7 @@ void setup() {
   img = loadImage("start1.jpg");
   img2 = loadImage("start2.jpg");
   pilot = new Pilot();
+  //size 100 because why not
   badDudes = new ArrayList<Enemy>(100);
 }
 
@@ -26,39 +27,52 @@ void draw() {
   if (frameCount%10 == 0) {
     badDudes.add(new Enemy());
   }
+  //let's start the game
   if (state == statePause) {
+    //the spacey background
     initstartscreen();
+    //was it g or p?
     keypressed();
   } else {
     clear();
+    //was it g or p?
     keypressed();
+    //this applies to every bad dude out there
     for (int i = badDudes.size() -1; i >= 0; i--) {
       Enemy test = badDudes.get(i);
       test.update();
+      //did the enemy hit the wall?
       if (wallcollision(test)) {
+        //die
         badDudes.remove(test);
       }
+      //did the player hit the wall?
       if (wallcollision(pilot)) {
+        //die
         setup();
         return;
       }
+      //did the player hit an enemy?
       if (collision( pilot, test )) {
         pilot.numLives--;
         pilot.lives.pop();
         badDudes.remove(test);
+        //if the player is dead, restart
         if (pilot.lives.isEmpty()) {
           setup();
           return;
         }
       }
     }
-      pilot.dragsegment();
-      pilot.dragtrail();
-      pilot.draglives();
-      pilot.dragtext();
-    }
+    //pilot things
+    pilot.dragsegment();
+    pilot.dragtrail();
+    pilot.draglives();
+    pilot.dragtext();
   }
+}
 
+//which key was pressed
 void keypressed() {
   if (key == 'p') {
     state = statePause;
@@ -67,6 +81,7 @@ void keypressed() {
   }
 }
 
+//the start screen
 void initstartscreen() {
   int s = second();
   if (s%2 == 1) {
@@ -76,6 +91,7 @@ void initstartscreen() {
   }
 }
 
+//collision between the player and an enemy
 boolean collision(Pilot a, Enemy b) {
   float tag = dist(a.x, a.y, b.x, b.y);
   if (tag <= 13) {
@@ -84,6 +100,7 @@ boolean collision(Pilot a, Enemy b) {
   return false;
 }
 
+//collision between an enemy and the wall
 boolean wallcollision(Enemy one) {
   if (one.x < 0 || one.y > height) {
     return true;
@@ -91,6 +108,7 @@ boolean wallcollision(Enemy one) {
   return false;
 }
 
+//collision between the player and the wall
 boolean wallcollision(Pilot one) {
   if (one.x <= 1 || one.x >= width-1 || one.y <= 1 || one.y >= height-1) {
     return true;

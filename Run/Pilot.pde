@@ -46,9 +46,10 @@ class Pilot {
     y+= dy;
     fill(col);
     ellipse(x, y, 17, 17);
-    line(x,y,x,y);
+    line(x, y, x, y);
   }//end dragsegment()
 
+  //dragtail()
   void dragtrail() {
     int trailLength;
     circlePosition = new PVector(mouseX, mouseY);
@@ -69,10 +70,10 @@ class Pilot {
     }
   }// end dragtrail()
 
-//visual representation of lives
-  void draglives(){
-    for(boolean b: lives){
-      if(b == true){
+  //visual representation of lives
+  void draglives() {
+    for (boolean b : lives) {
+      if (b == true) {
         float xpos  =  mouseX;
         float Dx = xpos - lx;
         float ypos = mouseY;
@@ -84,11 +85,12 @@ class Pilot {
         text(l, lx, ly);
       }
     }
-  }
-  
-  void dragtext(){  
-    for(boolean b: lives){
-      if(b == true){
+  }//end draglives()
+
+  //text to show the # of lives
+  void dragtext() {  
+    for (boolean b : lives) {
+      if (b == true) {
         float xpos  =  mouseX;
         float Dx = xpos - lx;
         float ypos = mouseY;
@@ -97,12 +99,8 @@ class Pilot {
         ly += Dy * easing;
         String l = numLives + "";
         text(l, lx, ly);
-        fill(255,0,0);
+        fill(255, 0, 0);
       }
     }
-  }
-  
-    
-
-
+  }//end dragtext()
 }//end class

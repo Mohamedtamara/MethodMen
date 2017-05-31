@@ -3,6 +3,7 @@ class Enemy {
   float x, y, dx, dy, rand, rad;
   color c;
 
+  //default constructor
   Enemy() {
     int whichWayb = (int)random(2);
     if (whichWayb == 0) {
@@ -20,12 +21,14 @@ class Enemy {
     c = color(255, 0, 0);
   }
 
+  //update method
   void update() {
     fill(c);
     ellipse(x, y, rad, rad);
     move();
   }
 
+  //how the enemy moves
   void move() {
     x += dx;
     y += dy;
