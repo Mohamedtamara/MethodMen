@@ -4,10 +4,13 @@ import java.util.*;
 final int stateGame  = 0; // consts
 final int statePause = 1;
 int state;    // current 
+int difficulty;    //difficulty
+int level;  //what level you're on
 PImage img;
 PImage img2;
 Pilot pilot;
 ArrayList<Enemy> badDudes;
+long time;
 
 void setup() {
   size(600, 600);
@@ -16,15 +19,18 @@ void setup() {
   state = statePause; 
   img = loadImage("start1.jpg");
   img2 = loadImage("start2.jpg");
+  difficulty = 10;
+  level = 1;
   pilot = new Pilot();
   //size 100 because why not
   badDudes = new ArrayList<Enemy>(100);
+  time = millis();
 }
 
 
 void draw() {
   //playing with the module increases # of enemies. (DIFFICULTY!!!!)
-  if (frameCount%10 == 0) {
+  if (frameCount % difficulty == 0) {
     badDudes.add(new Enemy());
   }
   //let's start the game
@@ -69,8 +75,16 @@ void draw() {
     pilot.dragtrail();
     pilot.draglives();
     pilot.dragtext();
+    text(level, 100, 20);
+    //int time = millis();
+    float temp = millis() - time;
+    if (temp >= 10000) {
+      difficulty--;
+      level++;
+      time = millis();
+    }
   }
-}
+}//end draw()
 
 //which key was pressed
 void keypressed() {

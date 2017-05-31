@@ -9,6 +9,7 @@ APCS2 pd05
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -Wall collision
+-Random spawning!
 
 
 UNRESOLVED ISSUES
@@ -24,6 +25,7 @@ COOL STUFF LEARNED
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -use of stacks for enemies instead of array
+-scratch that, we went back to arrays
 
 
 LESSONS LEARNED
@@ -90,10 +92,13 @@ Shaikat :: Work on start screen.
 --------------------------------------------------------------
 Mohamed :: finished wall collisions for both the enemies and 
 The player.
-Shaikat :: Worked on ReadME
+Shaikat :: Worked on ReadME.
 ==============================================================
 
-
+2017-05-31
+--------------------------------------------------------------
+Mohamed :: Worked on adding difficulty.
+==============================================================
 
 yyyy-mm-dd
 --------------------------------------------------------------
