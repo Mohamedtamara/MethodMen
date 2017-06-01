@@ -13,7 +13,7 @@ ArrayList<Enemy> badDudes;
 long time;
 
 void setup() {
-  size(600, 600);
+  size(800, 600);
   background(0);
   frameRate(60);
   state = statePause; 
@@ -76,14 +76,10 @@ void draw() {
     pilot.dragtrail();
     pilot.draglives();
     pilot.dragtext();
-    text(level, 100, 20);
+    String s = "Level " + level;
+    text(s, 100, 20);
     //int time = millis();
-    float temp = millis() - time;
-    if (temp >= 10000) {
-      difficulty--;
-      level++;
-      time = millis();
-    }
+    difficulty();
   }
 }//end draw()
 
@@ -129,4 +125,13 @@ boolean wallcollision(Pilot one) {
     return true;
   }
   return false;
+}
+
+void difficulty() {
+  float temp = millis() - time;
+  if (temp >= 10000) {
+    difficulty--;
+    level++;
+    time = millis();
+  }
 }
