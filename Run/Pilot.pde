@@ -12,7 +12,17 @@ class Pilot {
   float ly;
   float easing = .10;
   ArrayList<PVector> trail;
+  
+  //init tail
+  ArrayList<PVector> trailInit;
   //should change based on position of the pilot ball
+  int trailSizeInit = 10;
+  PVector circlePositionInit;
+  PVector currTrailInit;
+  PVector prevTrailInit;
+  
+  //should change based on position of the pilot ball
+  //second part of tail
   int trailSize = 19;
   PVector circlePosition;
   PVector currTrail;
@@ -31,7 +41,9 @@ class Pilot {
     lx = mouseX;
     ly = mouseY;
     trail = new ArrayList<PVector>();
+    trailInit = new ArrayList<PVector>();
     circlePosition = new PVector(width*.5, width*.5);
+    circlePositionInit = new PVector(width*.7, width*.7);
   }
 
 
@@ -48,11 +60,34 @@ class Pilot {
     ellipse(x, y, 17, 17);
     line(x, y, x, y);
   }//end dragsegment()
+  
+  //dragInit()
+  void dragInit() {
+    int trailLengthInit;
+    circlePositionInit = new PVector(mouseX, mouseY);
+    trailInit.add(circlePositionInit);
+    trailLengthInit = trailInit.size()-2;
 
-  //dragtail()
+    for (int i = 0; i < trailLengthInit; i++) {
+      PVector currTrailInit = trailInit.get(i);
+      PVector prevTrailInit = trailInit.get(i+1);      
+      stroke(255);
+      strokeWeight(3);
+      line(currTrailInit.x, currTrailInit.y, 
+        prevTrailInit.x, prevTrailInit.y);
+    }
+
+    if (trailLengthInit >= trailSizeInit) {
+      trailInit.remove(0);
+    }
+  }// end dragInit()
+  
+  
+
+  //dragtrail()
   void dragtrail() {
     int trailLength;
-    circlePosition = new PVector(mouseX, mouseY);
+    circlePosition = new PVector(mouseX , mouseY );
     trail.add(circlePosition);
     trailLength = trail.size()-2;
 
@@ -60,7 +95,7 @@ class Pilot {
       PVector currTrail = trail.get(i);
       PVector prevTrail = trail.get(i+1);      
       stroke(col);
-      strokeWeight(2);
+      strokeWeight(3);
       line(currTrail.x, currTrail.y, 
         prevTrail.x, prevTrail.y);
     }
