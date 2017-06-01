@@ -24,6 +24,7 @@ class Enemy {
   //update method
   void update() {
     fill(c);
+    stroke(0);
     ellipse(x, y, rad, rad);
     move();
   }

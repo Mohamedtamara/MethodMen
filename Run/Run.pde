@@ -74,15 +74,11 @@ void draw() {
     pilot.dragsegment();
     pilot.dragtrail();
     pilot.draglives();
-    pilot.dragtext();
-    text(level, 100, 20);
+    pilot.dragtext(); 
+    String s = "Level " + level;
+    text(s, 100, 20);
     //int time = millis();
-    float temp = millis() - time;
-    if (temp >= 10000) {
-      difficulty--;
-      level++;
-      time = millis();
-    }
+    difficulty();
   }
 }//end draw()
 
@@ -128,4 +124,18 @@ boolean wallcollision(Pilot one) {
     return true;
   }
   return false;
+}
+
+//burn down the house
+void difficulty() {
+  float temp = millis() - time;
+  if (temp >= 10000) {
+    difficulty--;
+    level++;
+    for (int i = 0; i < badDudes.size(); i++) {
+      badDudes.get(i).dx -= 1;
+      badDudes.get(i).dy += 1;
+    }
+    time = millis();
+  }
 }
