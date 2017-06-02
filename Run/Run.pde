@@ -10,6 +10,7 @@ PImage img;
 PImage img2;
 Pilot pilot;
 ArrayList<Enemy> badDudes;
+Stack<Powerup> goodDudes;
 long time;
 
 void setup() {
@@ -23,7 +24,7 @@ void setup() {
   level = 1;
   pilot = new Pilot();
   //size 100 because why not
-  badDudes = new ArrayList<Enemy>(100);
+  badDudes = new ArrayList<Enemy>();
   time = millis();
 }
 
@@ -111,12 +112,13 @@ boolean collision(Pilot a, Enemy b) {
   return false;
 }
 
+
 //did you get that powerup?
 boolean collision(Pilot a, Powerup b) {
   float tag = dist(a.x, a.y, b.x, b.y);
   if (tag <= 13) {
     return true;
-    stateChange(a,b);
+    //stateChange(a,b);
   }
   return false;
 }
