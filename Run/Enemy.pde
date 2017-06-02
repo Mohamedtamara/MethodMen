@@ -1,6 +1,6 @@
 class Enemy {
 
-  float x, y, dx, dy, rand, rad;
+  float x, y, lx, ly, rand, rad;
   color c;
 
   //default constructor
@@ -15,9 +15,9 @@ class Enemy {
       y = random(height);
     }
     rand = (random(3) + .5);
-    dx = -(rand);
-    dy = rand;
-    rad = random(8) + 5;
+    lx = -(rand);
+    ly = rand;
+    rad = random(8) + 6;
     c = color(255, 0, 0);
   }
 
@@ -31,7 +31,7 @@ class Enemy {
 
   //how the enemy moves
   void move() {
-    x += dx;
-    y += dy;
+    x += lx;
+    y += ly;
   }
 }

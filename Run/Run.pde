@@ -111,6 +111,21 @@ boolean collision(Pilot a, Enemy b) {
   return false;
 }
 
+//did you get that powerup?
+boolean collision(Pilot a, Powerup b) {
+  float tag = dist(a.x, a.y, b.x, b.y);
+  if (tag <= 13) {
+    return true;
+    stateChange(a,b);
+  }
+  return false;
+}
+
+//start the powerup
+void stateChange(Pilot a, Powerup b){
+  a.state = b.state;
+}
+
 //collision between an enemy and the wall
 boolean wallcollision(Enemy one) {
   if (one.x < 0 || one.y > height) {

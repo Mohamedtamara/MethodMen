@@ -4,12 +4,10 @@ class Pilot {
 
   //instance vars;
   Stack<Boolean> lives;
+  int state; //what powerup it has
   int numLives;
   color col;
-  float x;
-  float y;
-  float lx;
-  float ly;
+  float x,y,lx,ly;
   float easing = .10;
   ArrayList<PVector> trail;
   
