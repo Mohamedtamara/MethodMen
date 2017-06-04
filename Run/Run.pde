@@ -6,12 +6,15 @@ final int statePause = 1;
 int state;    // current 
 int difficulty;    //difficulty
 int level;  //what level you're on
+int score; //what your score is
 PImage img;
+PFont font;
 PImage img2;
 Pilot pilot;
 ArrayList<Enemy> badDudes;
 Stack<Powerup> goodDudes;
 long time;
+int m;
 
 void setup() {
   size(800, 600);
@@ -22,10 +25,14 @@ void setup() {
   img2 = loadImage("start2.jpg");
   difficulty = 10;
   level = 1;
+  score = 0;
+  m = 0;
   pilot = new Pilot();
   //size 100 because why not
   badDudes = new ArrayList<Enemy>();
   time = millis();
+  frameRate(120);
+  
 }
 
 
@@ -77,8 +84,20 @@ void draw() {
     pilot.dragtrail();
     pilot.draglives();
     pilot.dragtext();
-    String s = "Level " + level;
-    text(s, 100, 20);
+    int r = second();
+    if(r % 1 == 0){
+      m+=1;
+    }
+    String t = "Score: " + (m*.50);
+    String s = "Level: " + level;
+    String x = "Time: " + (m/120) + "s";
+    textSize(22);
+    text(s, 10, 20);
+    fill(0,255,255);
+    text(t, 120, 20);
+    fill(0,255,255);
+    text(x, 300, 20);
+    fill(0,255,255);
     //int time = millis();
     difficulty();
   }
@@ -123,10 +142,12 @@ boolean collision(Pilot a, Powerup b) {
   return false;
 }
 
+/*
 //start the powerup
 void stateChange(Pilot a, Powerup b){
   a.state = b.state;
 }
+*/
 
 //collision between an enemy and the wall
 boolean wallcollision(Enemy one) {
