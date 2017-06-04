@@ -17,7 +17,7 @@ class Enemy {
     rand = (random(3) + .5);
     lx = -(rand);
     ly = rand;
-    rad = random(8) + 6;
+    rad = 8 + (int)(Math.random() * 10); 
     c = color(255, 0, 0);
   }
 
