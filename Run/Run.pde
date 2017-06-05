@@ -12,7 +12,7 @@ PFont font;
 PImage img2;
 Pilot pilot;
 ArrayList<Enemy> badDudes;
-Stack<Powerup> goodDudes;
+ArrayList<Powerup> goodDudes;
 long time;
 int m;
 
@@ -30,17 +30,13 @@ void setup() {
   pilot = new Pilot();
   //size 100 because why not
   badDudes = new ArrayList<Enemy>();
+  goodDudes = new ArrayList<Powerup>();
   time = millis();
   frameRate(120);
-  
 }
 
 
 void draw() {
-  //playing with the module increases # of enemies. (DIFFICULTY!!!!)
-  if (frameCount % difficulty == 0) {
-    badDudes.add(new Enemy());
-  }
   //let's start the game
   if (state == statePause) {
     //the spacey background
@@ -51,6 +47,28 @@ void draw() {
     clear();
     //was it g or p?
     keypressed();
+    //playing with the module increases # of enemies. (DIFFICULTY!!!!)
+    if (frameCount % difficulty == 0) {
+      badDudes.add(new Enemy());
+    }
+    if (frameCount % difficulty == 0){
+      goodDudes.add(new Powerup(2));
+    }
+    //this applies to every good dude out there 
+    for(int g =  goodDudes.size() - 1; g >= 0; g--){
+      Powerup power = goodDudes.get(g);
+      power.update();
+      //did the powerup hit the wall?
+      if (wallcollision(power)){
+        //die
+        goodDudes.remove(power);
+      }
+      //did the player hit the powerup?
+      if(collision(pilot, power)){
+        text("POWERUP!", 340, 20);
+      }
+    }
+    
     //this applies to every bad dude out there
     for (int i = badDudes.size() -1; i >= 0; i--) {
       Enemy test = badDudes.get(i);
@@ -78,6 +96,7 @@ void draw() {
         }
       }
     }
+    
     //pilot things
     pilot.dragsegment();
     pilot.dragInit();
@@ -85,7 +104,7 @@ void draw() {
     pilot.draglives();
     pilot.dragtext();
     int r = second();
-    if(r % 1 == 0){
+    if (r % 1 == 0) {
       m+=1;
     }
     String t = "Score: " + (m*.50);
@@ -93,11 +112,11 @@ void draw() {
     String x = "Time: " + (m/120) + "s";
     textSize(22);
     text(s, 10, 20);
-    fill(0,255,255);
+    fill(0, 255, 255);
     text(t, 120, 20);
-    fill(0,255,255);
+    fill(0, 255, 255);
     text(x, 300, 20);
-    fill(0,255,255);
+    fill(0, 255, 255);
     //int time = millis();
     difficulty();
   }
@@ -144,10 +163,10 @@ boolean collision(Pilot a, Powerup b) {
 
 /*
 //start the powerup
-void stateChange(Pilot a, Powerup b){
-  a.state = b.state;
-}
-*/
+ void stateChange(Pilot a, Powerup b){
+ a.state = b.state;
+ }
+ */
 
 //collision between an enemy and the wall
 boolean wallcollision(Enemy one) {
@@ -165,11 +184,24 @@ boolean wallcollision(Pilot one) {
   return false;
 }
 
+//collision between powerup and the wall
+boolean wallcollision(Powerup one) {
+  if (one.x < 0 || one.y > height) {
+    return true;
+  }  
+  return false;
+}
+
 void difficulty() {
   float temp = millis() - time;
   if (temp >= 10000) {
     difficulty--;
     level++;
+    if (difficulty == 0) {
+      difficulty = 1;
+      level = 10;
+      return;
+    }
     time = millis();
   }
 }

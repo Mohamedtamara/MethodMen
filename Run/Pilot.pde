@@ -30,10 +30,9 @@ class Pilot {
   Pilot() {
     col = color(48, 139, 206, 140);
     lives = new Stack<Boolean>();
-    lives.push(true);
-    lives.push(true);
-    lives.push(true);
-    numLives = 3;
+    for (int i = 0; i < 100; i++)
+      lives.push(true);
+    numLives = 100;
     x = 300;
     y = 300;
     lx = mouseX;
@@ -131,8 +130,8 @@ class Pilot {
         lx += Dx * easing;
         ly += Dy * easing;
         String l = numLives + "";
-        text(l, lx, ly);
         fill(255, 0, 0);
+        text(l, lx, ly);
       }
     }
   }//end dragtext()
