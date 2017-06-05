@@ -30,9 +30,9 @@ class Pilot {
   Pilot() {
     col = color(48, 139, 206, 140);
     lives = new Stack<Boolean>();
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 3; i++)
       lives.push(true);
-    numLives = 100;
+    numLives = 3;
     x = 300;
     y = 300;
     lx = mouseX;
