@@ -32,7 +32,6 @@ void setup() {
   badDudes = new ArrayList<Enemy>();
   goodDudes = new ArrayList<Powerup>();
   time = millis();
-  frameRate(120);
 }
 
 
@@ -51,8 +50,8 @@ void draw() {
     if (frameCount % difficulty == 0) {
       badDudes.add(new Enemy());
     }
-    if (frameCount % difficulty == 0){
-      goodDudes.add(new Powerup(2));
+    if (frameCount % 300==0){
+      goodDudes.add(new Powerup());
     }
     //this applies to every good dude out there 
     for(int g =  goodDudes.size() - 1; g >= 0; g--){
@@ -109,7 +108,7 @@ void draw() {
     }
     String t = "Score: " + (m*.50);
     String s = "Level: " + level;
-    String x = "Time: " + (m/120) + "s";
+    String x = "Time: " + (m/60) + "s";
     textSize(22);
     text(s, 10, 20);
     fill(0, 255, 255);
