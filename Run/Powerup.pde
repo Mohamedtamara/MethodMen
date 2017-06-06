@@ -1,5 +1,5 @@
-class Powerup{
-  
+class Powerup {
+
   int state; //which powerup is it(1-5)
   float x, y, lx, ly, rand, rad;
   color c;
@@ -19,47 +19,54 @@ class Powerup{
     lx = -(rand);
     ly = rand;
     rad = 20;
-    state = 0;
+    state = (int)(random(5) + 1);
   }
-  
-  Powerup(int power){
-    state = power;
-  }
+
 
 
   //update method
   void update() {
+    stroke(0);
+    ellipse(x, y, 20, 20);
     if (state == 1) { //lives
-      c = color(0, 0, 225);
-      textSize(rad);
+      textSize(20);
       text("L", x, y);
+      fill(0);
+      c = color(0, 0, 225);
     }
     if (state == 2) { //slow time
-      c = color(0, 225, 225);
-      textSize(rad);
+      textSize(20);
       text("T", x, y);
+      fill(0);
+
+      c = color(0, 225, 225);
     }
     if (state == 3) { //mini
-      c = color(225, 0, 127);
-      textSize(rad);
+      textSize(20);
       text("M", x, y);
+      fill(0);
+
+      c = color(225, 0, 127);
     }
     if (state == 4) { //invincibility
-      c = color(0, 225, 0);
-      textSize(rad);
+      textSize(20);
       text("I", x, y);
+      fill(0);
+
+      c = color(0, 225, 0);
     }
     if (state == 5) { //gravity
-      c = color(225, 225, 0);
-      textSize(rad);
+      textSize(20);
       text("G", x, y);
+      fill(0);
+
+      c = color(225, 225, 0);
     }
     fill(c);
-    stroke(0);
-    ellipse(x, y, rad, rad);
+
     move();
   }
-  
+
 
   //how the powerup moves
   void move() {
