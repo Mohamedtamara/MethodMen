@@ -13,6 +13,7 @@ PImage img2;
 Pilot pilot;
 ArrayList<Enemy> badDudes;
 ArrayList<Powerup> goodDudes;
+boolean isInvincible;
 long time;
 int m;
 
@@ -28,7 +29,7 @@ void setup() {
   score = 0;
   m = 0;
   pilot = new Pilot();
-  //size 100 because why not
+  isInvincible = false;
   badDudes = new ArrayList<Enemy>();
   goodDudes = new ArrayList<Powerup>();
   time = millis();
@@ -67,10 +68,17 @@ void draw() {
         if (power.getState() == 1 ) {
           addLife(pilot);
           goodDudes.remove(power);
-        } else {
-          text("POWERUP!", 340, 20);
+        } else if (power.getState() == 2) {
+          for (Enemy e : badDudes) {
+            slowdown(e);
+          }
           goodDudes.remove(power);
-        }
+        } else {
+          for (Enemy e : badDudes) {
+            mini(e);
+          }
+          goodDudes.remove(power);
+        } 
       }
     }
 
@@ -203,6 +211,28 @@ void addLife(Pilot a) {
   a.lives.push(true);
   a.numLives ++;
 }
+
+//reverse direction of enemies
+void slowdown(Enemy e) {
+  e.lx+= 4;
+  e.ly-= 4;
+}
+
+//reduce radius of enemies
+void mini(Enemy e) {
+  e.rad -= 10;
+}
+
+//invincible pilot
+void invincible(Pilot a, Enemy e) {
+  while (isInvincible) {
+    stroke(204, 102, 0);
+    if (collision(a, e)) {
+      a.lives.push(true);
+    }
+  }
+}
+
 
 
 void difficulty() {
