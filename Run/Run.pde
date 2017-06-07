@@ -65,6 +65,7 @@ void draw() {
       //did the player hit the powerup?
       if(collision(pilot, power)){
         text("POWERUP!", 340, 20);
+        goodDudes.remove(power);
       }
     }
     
@@ -153,9 +154,8 @@ boolean collision(Pilot a, Enemy b) {
 //did you get that powerup?
 boolean collision(Pilot a, Powerup b) {
   float tag = dist(a.x, a.y, b.x, b.y);
-  if (tag <= 13) {
+  if (tag <= 17) {
     return true;
-    //stateChange(a,b);
   }
   return false;
 }
