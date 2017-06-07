@@ -10,27 +10,38 @@ OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -Wall collision
 -Random spawning!
+-Different rates of random spawning for 
+Enemies and power ups
 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--Enemies all spawn at once, should spawn randomly
+-lag occurs with too many enemies on screen,
+Messes with the spawn rate of enemies
+
 
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -drawtailsegment() - let there be tail!
-
+-running setup() again is an easy way to 
+Restart the game.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -use of stacks for enemies instead of array
 -scratch that, we went back to arrays
+-using the frameRate to dictate the spawn 
+Rate of both enemies and power ups instead
+Of a second counter.
 
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--exit() ends the program
+-exit() ends the program.
+-Stack use for enemies was way harder to 
+Implement than we originally thought, so
+We stuck with ArrayLists for functionality.
 
  ______   ______   __   __   __       ______   _______     
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
@@ -98,10 +109,21 @@ Shaikat :: Worked on ReadME.
 
 2017-06-04
 --------------------------------------------------------------
-Mohamed :: 
+Mohamed :: Worked on final UML and Flowchart
 Shaikat :: Worked on scoring, timing, and new pause screens.
 ==============================================================
 
+2017-06-05
+--------------------------------------------------------------
+Mohamed :: Worked on class Powerup
+Shaikat :: Worked on driver file implementation of Power
+==============================================================
+
+2017-06-06
+--------------------------------------------------------------
+Mohamed :: Finished final deliverables
+Shaikat :: Final bug fixes
+==============================================================
 
 yyyy-mm-dd
 --------------------------------------------------------------
