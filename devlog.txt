@@ -42,6 +42,8 @@ LESSONS LEARNED
 -Stack use for enemies was way harder to 
 Implement than we originally thought, so
 We stuck with ArrayLists for functionality.
+-If worst comes to worst, and you can’t make
+Code for every case, hard code it.
 
  ______   ______   __   __   __       ______   _______     
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
