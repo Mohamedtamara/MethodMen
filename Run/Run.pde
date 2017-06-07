@@ -50,25 +50,30 @@ void draw() {
     if (frameCount % difficulty == 0) {
       badDudes.add(new Enemy());
     }
-    if (frameCount % 300==0){
+    if (frameCount % 300==0) {
       goodDudes.add(new Powerup());
     }
     //this applies to every good dude out there 
-    for(int g =  goodDudes.size() - 1; g >= 0; g--){
+    for (int g =  goodDudes.size() - 1; g >= 0; g--) {
       Powerup power = goodDudes.get(g);
       power.update();
       //did the powerup hit the wall?
-      if (wallcollision(power)){
+      if (wallcollision(power)) {
         //die
         goodDudes.remove(power);
       }
       //did the player hit the powerup?
-      if(collision(pilot, power)){
-        text("POWERUP!", 340, 20);
-        goodDudes.remove(power);
+      if (collision(pilot, power)) {
+        if (power.getState() == 1 ) {
+          addLife(pilot);
+          goodDudes.remove(power);
+        } else {
+          text("POWERUP!", 340, 20);
+          goodDudes.remove(power);
+        }
       }
     }
-    
+
     //this applies to every bad dude out there
     for (int i = badDudes.size() -1; i >= 0; i--) {
       Enemy test = badDudes.get(i);
@@ -96,7 +101,7 @@ void draw() {
         }
       }
     }
-    
+
     //pilot things
     pilot.dragsegment();
     pilot.dragInit();
@@ -190,6 +195,15 @@ boolean wallcollision(Powerup one) {
   }  
   return false;
 }
+
+//POWERUP METHODS
+
+//add a life to the pilot
+void addLife(Pilot a) {
+  a.lives.push(true);
+  a.numLives ++;
+}
+
 
 void difficulty() {
   float temp = millis() - time;
