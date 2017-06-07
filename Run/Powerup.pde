@@ -19,7 +19,7 @@ class Powerup {
     lx = -(rand);
     ly = rand;
     rad = 20;
-    state = (int)(random(5) + 1);
+    state = 1 + (int)(Math.random() * 5);
   }
 
 
@@ -30,36 +30,40 @@ class Powerup {
     ellipse(x, y, 20, 20);
     if (state == 1) { //lives
       textSize(20);
+      fill(255);
       text("L", x, y);
-      fill(0);
       c = color(0, 0, 225);
     }
     if (state == 2) { //slow time
       textSize(20);
+      fill(255);
       text("T", x, y);
-      fill(0);
       c = color(0, 225, 225);
     }
     if (state == 3) { //mini
       textSize(20);
+      fill(255);
       text("M", x, y);
-      fill(0);
       c = color(225, 0, 127);
     }
     if (state == 4) { //invincibility
       textSize(20);
+      fill(255);
       text("I", x, y);
-      fill(0);
       c = color(0, 225, 0);
     }
     if (state == 5) { //gravity
       textSize(20);
+      fill(255);
       text("G", x, y);
-      fill(0);
       c = color(225, 225, 0);
     }
     fill(c);
     move();
+  }
+  //getting the state of the powerup
+  int getState(){
+    return state;
   }
 
 
