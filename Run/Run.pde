@@ -78,7 +78,7 @@ void draw() {
             mini(e);
           }
           goodDudes.remove(power);
-        } 
+        }
       }
     }
 
@@ -214,13 +214,14 @@ void addLife(Pilot a) {
 
 //reverse direction of enemies
 void slowdown(Enemy e) {
-  e.lx+= 4;
-  e.ly-= 4;
+  e.lx= -1;
+  e.ly= 1;
 }
+
 
 //reduce radius of enemies
 void mini(Enemy e) {
-  e.rad -= 10;
+  e.rad = 10;
 }
 
 //invincible pilot
