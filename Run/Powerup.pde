@@ -1,6 +1,6 @@
 class Powerup {
 
-  int state; //which powerup is it(1-5)
+  int state; //which powerup is it(1-3)
   float x, y, lx, ly, rand, rad;
   color c;
 
