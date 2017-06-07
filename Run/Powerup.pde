@@ -19,7 +19,7 @@ class Powerup {
     lx = -(rand);
     ly = rand;
     rad = 20;
-    state = 1 + (int)(Math.random() * 5);
+    state = 1 + (int)(Math.random() * 3);
   }
 
 
@@ -45,18 +45,6 @@ class Powerup {
       fill(255);
       text("M", x, y);
       c = color(225, 0, 127);
-    }
-    if (state == 4) { //invincibility
-      textSize(20);
-      fill(255);
-      text("I", x, y);
-      c = color(0, 225, 0);
-    }
-    if (state == 5) { //gravity
-      textSize(20);
-      fill(255);
-      text("G", x, y);
-      c = color(225, 225, 0);
     }
     fill(c);
     move();
